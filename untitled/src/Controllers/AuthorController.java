@@ -15,6 +15,7 @@ public class AuthorController {
             do {
                 MenuHolder.menuAuthorOpcionesPrincipales();
                 pildora = sc.nextInt();
+                sc.nextLine();
                 if (pildora != 1 && pildora != 2 && pildora !=3 && pildora !=4 && pildora !=5){
                     System.out.println("Nah uh");
                 }
@@ -29,7 +30,6 @@ public class AuthorController {
 
                     System.out.println("< < DATOS DEL AUTOR NUEVO > >");
                     System.out.printf("Nombre: ");
-                    sc.nextLine();
                     nom1 = sc.nextLine();
                     System.out.printf("Apellido: ");
                     nom2 = sc.nextLine();

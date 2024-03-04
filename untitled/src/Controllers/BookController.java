@@ -5,9 +5,9 @@ import Repositories.*;
 import java.util.*;
 
 public class BookController {
-    static Scanner sc = new Scanner(System.in);
-    static int pildora,auxn,indice;
-    static String auxs;
+    public static Scanner sc = new Scanner(System.in);
+    public static int pildora,auxn,indice=0;
+    public static String auxs;
     public static void bookMetodo() {
         do {
             do { //Menu Principal de libros
@@ -73,13 +73,12 @@ public class BookController {
                         break;
                     }else{
                         MenuHolder.menuBookShowLibraryBooks();
-                        System.out.println("");
                         do {
                             System.out.printf(">> Que libro desea editar: ");
                             indice = sc.nextInt();
+                            indice--;
                         }while (indice> BookRepository.libraryBooks.size() || indice<=0);
                     }
-
                     do {/*Menu de edicion*/
                         MenuHolder.menuBookEdit();
                         System.out.printf(">> ");
@@ -116,7 +115,6 @@ public class BookController {
 
                             BookRepository.libraryBooks.get(indice).setPublishDate(modifiedDate);
                             break;
-
                         case 4://Cambiar el Autor de un libro
                             String autorTemp,autorTemp2;
                             int i=0,j=0;
@@ -127,30 +125,16 @@ public class BookController {
                                 sc.nextLine();
                                 auxn--;
                             }while (auxn>AuthorRepository.authorArrayList.size() || auxn<0);
-
-
-                            do {/*libro al que se le cambia el autor*/
-                                MenuHolder.menuBookShowLibraryBooks();
-                                indice = sc.nextInt();
-                                sc.nextLine();
-                                indice--;
-                            }while(indice>BookRepository.libraryBooks.size() || indice<0);
-
-
                             auxs = BookRepository.libraryBooks.get(indice).getAuthor();
-
                             do {/*Nombre de el author que coinsida con el del libro*/
                                 autorTemp = AuthorRepository.authorArrayList.get(i).getProfileAuthorName();
                                 i++;
                             }while(auxs != autorTemp);
-
                             auxs = BookRepository.libraryBooks.get(indice).getTitle();
-
                             do {
                                 autorTemp2 = AuthorRepository.authorArrayList.get(i).authorBooks.get(j).getTitle();
                                 j++;
                             }while(auxs != autorTemp2);
-
                             /*Logica de remplaso y cambio de autor en el objeto*/
                             AuthorRepository.authorArrayList.get(auxn).authorBooks.add(AuthorRepository.authorArrayList.get(i).authorBooks.get(j));
                             AuthorRepository.authorArrayList.get(i).authorBooks.get(j).setAuthor(AuthorRepository.authorArrayList.get(auxn).getProfileAuthorName());
@@ -159,6 +143,26 @@ public class BookController {
                         case 5:
                             System.out.println("Regresando al menu anterior");
                             break;
+                    }
+                case 3:
+                    do {
+                        MenuHolder.menuBookShowLibraryBooks();
+                        System.out.printf(">> Seleccione el libro a eliminar: ");
+                        auxn= sc.nextInt();
+                        sc.nextLine();
+                        auxn--;
+                    }while(auxn> BookRepository.libraryBooks.size() || auxn <0);
+                    if (BookRepository.libraryBooks.get(auxn).getAvailable()){
+                        for (int i=0 ; i<AuthorRepository.authorArrayList.size();i++){
+                            if (AuthorRepository.authorArrayList.get(i).getProfileAuthorName() == BookRepository.libraryBooks.get(auxn).getAuthor()){
+                                for (int j=0; j<AuthorRepository.authorArrayList.get(i).authorBooks.size();j++){
+                                    if (AuthorRepository.authorArrayList.get(i).authorBooks.get(j).getAuthor() == BookRepository.libraryBooks.get(auxn).getAuthor() ){
+                                        AuthorRepository.authorArrayList.get(i).authorBooks.remove(j);
+                                    }
+                                }
+                            }
+                        }
+                        BookRepository.libraryBooks.remove(auxn);
                     }
                 case 4://mostrar libros
                     MenuHolder.menuBookShowLibraryBooks();

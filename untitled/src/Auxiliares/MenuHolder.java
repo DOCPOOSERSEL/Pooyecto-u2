@@ -44,7 +44,8 @@ public class MenuHolder {
     }
     public static void menuAuthorSinLibros(){
         System.out.println("_____________________________________________________");
-        System.out.printf("| %-41s |\n", "Autores");
+        System.out.printf("| %-50s |\n", "Autores");
+        System.out.println("_____________________________________________________");
         System.out.printf("| %-10s |", "Nombre");
         System.out.printf("| %-10s |", "Apellido");
         System.out.printf("| %-21s |\n", "Fecha de nacimiento");
@@ -57,7 +58,7 @@ public class MenuHolder {
     }
     public static void menuAuthorConLibros(){
         System.out.println("________________________________________________________");
-        System.out.printf("| %-45s |\n", "Autores");
+        System.out.printf("| %-50s |\n", "Autores");
         System.out.println("________________________________________________________");
         System.out.printf("| %-10s |", "Nombre");
         System.out.printf("| %-10s |", "Apellido");
@@ -65,13 +66,13 @@ public class MenuHolder {
         for (int i=0; i< AuthorRepository.authorArrayList.size()  ; i++){
             System.out.printf( "|%-2s %-10s",i+1 ,AuthorRepository.authorArrayList.get(i).getProfileAuthorName());
             System.out.printf(" %-10s  |",AuthorRepository.authorArrayList.get(i).getProfileAuthorLastName());
-            System.out.printf("| %-7s / %-7s/ %-7s|\n",AuthorRepository.authorArrayList.get(i).getProfileAuthorBirthdate().getDay(),AuthorRepository.authorArrayList.get(i).getProfileAuthorBirthdate().getMonth(),AuthorRepository.authorArrayList.get(i).getProfileAuthorBirthdate().getYear());
+            System.out.printf("| %-7s/ %-7s/ %-7s|\n",AuthorRepository.authorArrayList.get(i).getProfileAuthorBirthdate().getDay(),AuthorRepository.authorArrayList.get(i).getProfileAuthorBirthdate().getMonth(),AuthorRepository.authorArrayList.get(i).getProfileAuthorBirthdate().getYear());
             if (AuthorRepository.authorArrayList.get(i).authorBooks.isEmpty()){
                 System.out.println("________________________________________________________");
             }else {
                 int temp = AuthorRepository.authorArrayList.get(i).authorBooks.size();
                 for (int j = 0; j < temp ; j++) {
-                    System.out.printf("|%-2s", j + 1, "%-41s |\n", AuthorRepository.authorArrayList.get(i).authorBooks.get(j).getTitle());
+                    System.out.printf("|%-2s %-41s |\n",j+1, AuthorRepository.authorArrayList.get(i).authorBooks.get(j).getTitle());
                 }
                 System.out.println("_____________________________________________________");
             }
@@ -100,29 +101,30 @@ public class MenuHolder {
         System.out.printf("| %-20s |\n","4.-Mostrar Libros");
         System.out.printf("| %-20s |\n","5.-Regresar");
         System.out.println("------------------------");
+        System.out.printf(">> ");
     }
     public static void menuBookSeleccionarAuthorParaCrearLibro(){
         System.out.println("> > Book Creator < <");
-        System.out.printf(" %-10s \n","-------------------");
-        System.out.printf("| %-10s |\n","Ingrese el autor del libro");
-        System.out.printf(" %-10s \n","-------------------");
+        System.out.printf(" %-10s \n","-----------------------------");
+        System.out.printf("| %-26s |\n","Ingrese el autor del libro");
+        System.out.printf(" %-10s \n","-----------------------------");
         for ( int i=0 ; i<AuthorRepository.authorArrayList.size(); i++ ){
             System.out.printf("|%-2s.- ",i+1);
-            System.out.printf("%-8s |\n",AuthorRepository.authorArrayList.get(i).getProfileAuthorName());
+            System.out.printf("%-22s |\n",AuthorRepository.authorArrayList.get(i).getProfileAuthorName());
         }
-        System.out.printf(" %-10s \n","-------------------");
+        System.out.printf(" %-10s \n","-----------------------------");
     }
     public static void menuBookShowLibraryBooks(){
         System.out.println();
-        System.out.printf("----------------------------------------------------------------------%n");
+        System.out.printf("---------------------------------------------------------------------------------------------------%n");
         System.out.printf("                                Libros  Chucho                      %n");
-        System.out.printf("----------------------------------------------------------------------%n");
-        System.out.printf("| %-6s | %-10s | %-10s | %-10s | %-4s | %-13s |%n","Puesto", "Título", "Autor", "Disponibilidad", "Año", "ISBN");
-        System.out.printf("----------------------------------------------------------------------%n");
+        System.out.printf("---------------------------------------------------------------------------------------------------%n");
+        System.out.printf("| %-6s | %-30s | %-10s | %-10s | %-10s | %-14s |%n","Puesto", "Título", "Autor", "Abailable", "Año", "ISBN");
+        System.out.printf("---------------------------------------------------------------------------------------------------%n");
 
         for (int i = 0; i < BookRepository.libraryBooks.size(); i++) {
-            System.out.printf("| %-6s | %-10s | %-10s | %-10s | %-4s | %-14s |%n", i+1, BookRepository.libraryBooks.get(i).getTitle(), BookRepository.libraryBooks.get(i).getAuthor(), BookRepository.libraryBooks.get(i).getAvailable(), BookRepository.libraryBooks.get(i).getPublishDate(), BookRepository.libraryBooks.get(i).getISBN());
-            System.out.printf("----------------------------------------------------------------------%n");
+            System.out.printf("| %-6s | %-30s | %-10s | %-10s | %-2s/%-2s/%-2s | %-14s |%n", i+1, BookRepository.libraryBooks.get(i).getTitle(), BookRepository.libraryBooks.get(i).getAuthor(), BookRepository.libraryBooks.get(i).getAvailable(), BookRepository.libraryBooks.get(i).getPublishDate().getDate(),BookRepository.libraryBooks.get(i).getPublishDate().getMonth(),BookRepository.libraryBooks.get(i).getPublishDate().getYear(), BookRepository.libraryBooks.get(i).getISBN());
+            System.out.printf("---------------------------------------------------------------------------------------------------%n");
         }
     }
     public static void menuBookEdit(){
@@ -161,21 +163,21 @@ public class MenuHolder {
         System.out.printf(">> ");
     }
     public static void menuEnseñarclientesConLibros(){
-        System.out.println("________________________________________________________");
-        System.out.printf("| %-45s |\n", "clientes");
-        System.out.println("________________________________________________________");
+        System.out.println("______________________________________________________");
+        System.out.printf("| %-50s |\n", "clientes");
+        System.out.println("______________________________________________________");
         System.out.printf("| %-10s |", "Nombre");
         System.out.printf("| %-10s |", "Apellido");
-        System.out.printf("| %-25s |\n", "Fecha de nacimiento");
+        System.out.printf("| %-24s |\n", "Fecha de nacimiento");
         for (int i=0; i< ClientRepository.clientArrayList.size()  ; i++){
             System.out.printf( "|%-2s %-10s",i+1 ,ClientRepository.clientArrayList.get(i).getCLientName());
             System.out.printf(" %-10s  |",ClientRepository.clientArrayList.get(i).getCLientLastName());
-            System.out.printf("| %-23s |\n",ClientRepository.clientArrayList.get(i).getCLientDateOfBirth());
+            System.out.printf("| %-7s/%-7s7%7s |\n",ClientRepository.clientArrayList.get(i).getCLientDateOfBirth().getDate(),ClientRepository.clientArrayList.get(i).getCLientDateOfBirth().getMonth(),ClientRepository.clientArrayList.get(i).getCLientDateOfBirth().getYear());
             if (ClientRepository.clientArrayList.get(i).borrowedBooks.isEmpty()){
-                System.out.println("________________________________________________________");
+                System.out.println("______________________________________________________");
             }else {
                 for (int j = 0; j < ClientRepository.clientArrayList.get(i).borrowedBooks.size() ; j++) {
-                    System.out.printf("|%-2s", j + 1, "%-41s |\n", ClientRepository.clientArrayList.get(i).borrowedBooks.get(j).getTitle());
+                    System.out.printf("|%-2s %-41s |\n",j+1, ClientRepository.clientArrayList.get(i).borrowedBooks.get(j).getTitle());
                 }
                 System.out.println("_____________________________________________________");
             }
@@ -217,24 +219,25 @@ public class MenuHolder {
 
     //Transacciones
     public static void menuTransaccionInicio(){
-        System.out.println("------------------------");
-        System.out.printf("| %-20s |\n","Menu");
-        System.out.println("------------------------");
-        System.out.printf("| %-20s |\n","1.-Sacar un libro");
-        System.out.printf("| %-20s |\n","2.-Regresar un libro");
-        System.out.printf("| %-20s |\n","3.-Mostrar Transacciones");
-        System.out.printf("| %-20s |\n","4.-Regresar");
-        System.out.println("------------------------");
+        System.out.println("----------------------------------");
+        System.out.printf("| %-30s |\n","Menu");
+        System.out.println("----------------------------------");
+        System.out.printf("| %-30s |\n","1.-Sacar un libro");
+        System.out.printf("| %-30s |\n","2.-Regresar un libro");
+        System.out.printf("| %-30s |\n","3.-Mostrar Transacciones");
+        System.out.printf("| %-30s |\n","4.-Regresar");
+        System.out.println("----------------------------------");
         System.out.printf(">> ");
     }
     public static void menuEnseñarClientesParaTransacciones(){
-        System.out.println("> > Client  < <");
-        System.out.printf(" %-10s \n","-------------------");
+        System.out.printf(" %-10s \n","-----------------------");
+        System.out.printf("%-14s\n","Clientes para transacciones");
+        System.out.printf(" %-10s \n","-----------------------");
         for (int i = 0; i< ClientRepository.clientArrayList.size(); i++ ){
             System.out.printf("|%-2s.- ",i+1);
-            System.out.printf("%-8s |\n",ClientRepository.clientArrayList.get(i).getCLientName());
+            System.out.printf("%-12s |\n",ClientRepository.clientArrayList.get(i).getCLientName());
         }
-        System.out.printf(" %-10s \n","-------------------");
+        System.out.printf(" %-10s \n","-----------------------");
     }
     public static void menuSeleccionarFiltroTransacciones(){
         System.out.println("------------------------");

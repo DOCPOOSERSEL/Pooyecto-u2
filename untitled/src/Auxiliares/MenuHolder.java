@@ -168,7 +168,8 @@ public class MenuHolder {
         System.out.println("______________________________________________________");
         System.out.printf("| %-10s |", "Nombre");
         System.out.printf("| %-10s |", "Apellido");
-        System.out.printf("| %-24s |\n", "Fecha de nacimiento");
+        System.out.printf("| %-23s |\n", "Fecha de nacimiento");
+        System.out.println("______________________________________________________");
         for (int i=0; i< ClientRepository.clientArrayList.size()  ; i++){
             System.out.printf( "|%-2s %-10s",i+1 ,ClientRepository.clientArrayList.get(i).getCLientName());
             System.out.printf(" %-10s  |",ClientRepository.clientArrayList.get(i).getCLientLastName());

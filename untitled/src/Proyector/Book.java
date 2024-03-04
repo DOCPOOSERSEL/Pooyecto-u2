@@ -5,7 +5,7 @@ public class Book {
     private String ISBN;
     private String title;
     private String author;
-    private Date publishDate;
+    private Date publishDate = new Date();
     private Boolean isAvailable;
 
     public void bookCreator(String ISBN, String title, String author, Date publishDate, Boolean isAvailable) {

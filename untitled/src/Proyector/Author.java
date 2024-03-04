@@ -1,11 +1,11 @@
 package Proyector;
 import java.util.*;
 public class Author {
-    private Profile profile;
-    public ArrayList<Book> authorBooks = new ArrayList<Book>();
+    private Profile profile = new Profile();
+    public ArrayList<Book> authorBooks = new ArrayList<>();
 
     public void setProfileAuthorCompleto(String nom, String apellido, Date birthdate){
-        profile = new Profile(nom,apellido,birthdate);
+        profile.setProfile(nom,apellido,birthdate);
     }
     public void setProfileAuthorName(String name){
         profile.setSkibiname(name);

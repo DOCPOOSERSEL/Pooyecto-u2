@@ -1,4 +1,5 @@
 package Controllers;
+import Auxiliares.MenuHolder;
 import Proyector.*;
 import Repositories.*;
 import java.util.*;
@@ -53,13 +54,13 @@ public class AuthorController {
                 case 2://Mostrar los autores para editar
 
                     int pildora2,indice;
-                    MenuHolder.menuAuthorSinLibros();
                     do {
+                        MenuHolder.menuAuthorSinLibros();
                         System.out.printf(">> Ingrese el indice: ");
                         indice = sc.nextInt();
-                        indice = indice-1;
+                        sc.nextLine();
+                        indice--;
                     }while (indice>AuthorRepository.authorArrayList.size() || indice < 0);
-                    sc.nextLine();
                     do {
                         MenuHolder.menuAuthorEdicion();
                         pildora2 = sc.nextInt();
@@ -97,7 +98,7 @@ public class AuthorController {
                     do {
                         System.out.printf(">> Ingrese el indice: ");
                         indice = sc.nextInt();
-                        indice = indice-1;
+                        indice--;
                     }while (indice>AuthorRepository.authorArrayList.size() || indice < 0);
                     sc.nextLine();
 

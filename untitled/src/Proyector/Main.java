@@ -1,7 +1,8 @@
 package Proyector;
 import java.util.*;
 import Controllers.*;
-import Controllers.MenuHolder;
+import Auxiliares.MenuHolder;
+import Repositories.Seeder;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,14 +18,12 @@ public class Main {
         do {
             switch (opcion){
                 case 1:
-
-                    //seeder que da sida proxima funcion de el omnitrix
+                    Repositories.Seeder.seederMetodo();
                     do {
                         sc.nextLine();
                         MenuHolder.menuDeInicioManual();
                         opcion2 = sc.nextInt();
                     } while (opcion2 != 1 && opcion2 != 2 && opcion2 != 3 && opcion2 != 4 ) ;
-
                     if (opcion2 == 1) {
                         AuthorController.authorMetodo();
                     } else if (opcion2 == 2) {
@@ -49,7 +48,7 @@ public class Main {
                     } else if (opcion2 == 2) {
                         BookController.bookMetodo();
                     } else if (opcion2 == 3) {
-
+                        ClientController.metodoClientController();
                     } else if (opcion2 == 4) {
                         System.out.println("Buenas noches chavales");
                         flandelimon = false;

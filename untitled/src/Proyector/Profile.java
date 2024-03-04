@@ -3,9 +3,9 @@ import java.util.Date;
 public class Profile  {
     private String Skibiname;
     private String skibidiapellido;
-    private Date Skibidifecha;
+    private Date Skibidifecha = new Date();
 
-    public Profile(String skibiname, String skibidiapellido, Date skibidifecha) {
+    public void setProfile(String skibiname, String skibidiapellido, Date skibidifecha) {
         this.Skibiname = skibiname;
         this.skibidiapellido = skibidiapellido;
         Skibidifecha = skibidifecha;
